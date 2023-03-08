@@ -1,7 +1,15 @@
-import React from 'react'
+import React from 'react';
 
 export default function Footer() {
   return (
-    <div>Footer</div>
+    <>
+      <footer className="py-5 bg-dark mt-auto">
+        <div className="container px-5">
+          <p className="m-0 text-center text-white">
+            Copyright &copy; Your Website 2022
+          </p>
+        </div>
+      </footer>
+    </>
   )
 }
