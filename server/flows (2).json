@@ -1,0 +1,559 @@
+[
+    {
+        "id": "ee1c2c70e88569a9",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "04c6f5530dde5215",
+        "type": "http in",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "url": "/post",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 80,
+        "wires": [
+            [
+                "c50e3a66754d1c9d"
+            ]
+        ]
+    },
+    {
+        "id": "c50e3a66754d1c9d",
+        "type": "function",
+        "z": "ee1c2c70e88569a9",
+        "name": "function 24",
+        "func": "msg.data = msg.payload;\nvar data = msg.payload;\n\nmsg.topic=`\nSELECT * FROM tb_unit\nWHERE unit = '${data.unit}'\n`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "a75ef63683fad1e0"
+            ]
+        ]
+    },
+    {
+        "id": "a75ef63683fad1e0",
+        "type": "mysql",
+        "z": "ee1c2c70e88569a9",
+        "mydb": "0cd06b2442e132c0",
+        "name": "",
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "f96ea084ed41ef36"
+            ]
+        ]
+    },
+    {
+        "id": "f96ea084ed41ef36",
+        "type": "switch",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "property": "payload.length",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "ba50c3b7e982e3b9",
+                "cf316da891b0be57"
+            ],
+            [
+                "5d5fb58450c58875"
+            ]
+        ]
+    },
+    {
+        "id": "ba50c3b7e982e3b9",
+        "type": "function",
+        "z": "ee1c2c70e88569a9",
+        "name": "function 25",
+        "func": "var data = msg.data;\n\nmsg.topic = `\nINSERT INTO tb_unit (unit, img_design, description)\nVALUES ('${data.unit}', '${data.imgDesign}', ${data.description})\n`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 180,
+        "wires": [
+            [
+                "e01c139d842d26b7"
+            ]
+        ]
+    },
+    {
+        "id": "9abe9fa120bb9007",
+        "type": "http response",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 860,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "5d5fb58450c58875",
+        "type": "http response",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "statusCode": "417",
+        "headers": {},
+        "x": 560,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e01c139d842d26b7",
+        "type": "mysql",
+        "z": "ee1c2c70e88569a9",
+        "mydb": "0cd06b2442e132c0",
+        "name": "",
+        "x": 720,
+        "y": 180,
+        "wires": [
+            [
+                "9abe9fa120bb9007",
+                "233d29859b6ff91a"
+            ]
+        ]
+    },
+    {
+        "id": "cf316da891b0be57",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 22",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "7f0c4b3cce94eca1",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 23",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "233d29859b6ff91a",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 24",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "0c3f6b2b24b72104",
+        "type": "function",
+        "z": "ee1c2c70e88569a9",
+        "name": "function 26",
+        "func": "msg.data = msg.payload;\nvar data = msg.payload;\n\nmsg.topic =`\nSELECT * FROM tb_unit \n`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "bddffab4ca30894b"
+            ]
+        ]
+    },
+    {
+        "id": "bddffab4ca30894b",
+        "type": "mysql",
+        "z": "ee1c2c70e88569a9",
+        "mydb": "0cd06b2442e132c0",
+        "name": "",
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "2a70aa0a0b46e05c",
+                "6ad958186aab4c71"
+            ]
+        ]
+    },
+    {
+        "id": "2a70aa0a0b46e05c",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 25",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "0a1e1b6c9ed07f53",
+        "type": "http in",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "url": "/all",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 320,
+        "wires": [
+            [
+                "0c3f6b2b24b72104"
+            ]
+        ]
+    },
+    {
+        "id": "6ad958186aab4c71",
+        "type": "http response",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 500,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "a2de1d6b343e9dd3",
+        "type": "http in",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "url": "/edit/:id",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "6ec50963e69ff804"
+            ]
+        ]
+    },
+    {
+        "id": "6ec50963e69ff804",
+        "type": "function",
+        "z": "ee1c2c70e88569a9",
+        "name": "function 27",
+        "func": "msg.data = msg.payload;\nvar data = msg.payload;\n\nmsg.topic =`\nUPDATE tb_unit SET \nunit ='${data.unit}',img_design='${data.imgDesign}',description='${data.description}' WHERE ID = ${msg.req.params.id}`\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 710,
+        "y": 360,
+        "wires": [
+            [
+                "8526ed838666d919"
+            ]
+        ]
+    },
+    {
+        "id": "8526ed838666d919",
+        "type": "mysql",
+        "z": "ee1c2c70e88569a9",
+        "mydb": "0cd06b2442e132c0",
+        "name": "",
+        "x": 820,
+        "y": 400,
+        "wires": [
+            [
+                "a4e06e0273cb8498",
+                "40142b4ef45f55f8"
+            ]
+        ]
+    },
+    {
+        "id": "a4e06e0273cb8498",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 26",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7e4af93b8609ae44",
+        "type": "http in",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "url": "/delete/:id",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "81ed5261d0700e38",
+                "e3a6cfb828b4e0cf"
+            ]
+        ]
+    },
+    {
+        "id": "81ed5261d0700e38",
+        "type": "function",
+        "z": "ee1c2c70e88569a9",
+        "name": "function 28",
+        "func": "\nmsg.topic =`\nDELETE FROM tb_unit WHERE ID = ${msg.req.params.id}\n`\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 580,
+        "wires": [
+            [
+                "1347e346c01c711e",
+                "93fae3c671409c7b"
+            ]
+        ]
+    },
+    {
+        "id": "1347e346c01c711e",
+        "type": "mysql",
+        "z": "ee1c2c70e88569a9",
+        "mydb": "0cd06b2442e132c0",
+        "name": "",
+        "x": 360,
+        "y": 620,
+        "wires": [
+            [
+                "04e0b464984b9684",
+                "26c0385692841afb"
+            ]
+        ]
+    },
+    {
+        "id": "04e0b464984b9684",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 27",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "40142b4ef45f55f8",
+        "type": "http response",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 980,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "26c0385692841afb",
+        "type": "http response",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 520,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "7048da381702cf2c",
+        "type": "function",
+        "z": "ee1c2c70e88569a9",
+        "name": "function 30",
+        "func": "\nmsg.topic =`\nSELECT * FROM tb_unit WHERE ID = ${msg.req.params.id}\n`\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 780,
+        "wires": [
+            [
+                "a6210ff4b0798896"
+            ]
+        ]
+    },
+    {
+        "id": "a6210ff4b0798896",
+        "type": "mysql",
+        "z": "ee1c2c70e88569a9",
+        "mydb": "0cd06b2442e132c0",
+        "name": "",
+        "x": 360,
+        "y": 840,
+        "wires": [
+            [
+                "506e2440267391ef",
+                "34a320b11166a872"
+            ]
+        ]
+    },
+    {
+        "id": "506e2440267391ef",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 28",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 520,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "7a2f43b86c4f0db5",
+        "type": "http in",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "url": "/getById/:id",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 720,
+        "wires": [
+            [
+                "7048da381702cf2c"
+            ]
+        ]
+    },
+    {
+        "id": "34a320b11166a872",
+        "type": "http response",
+        "z": "ee1c2c70e88569a9",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 520,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "e3a6cfb828b4e0cf",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 29",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "93fae3c671409c7b",
+        "type": "debug",
+        "z": "ee1c2c70e88569a9",
+        "name": "debug 30",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "0cd06b2442e132c0",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "db_apart",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
