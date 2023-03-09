@@ -33,6 +33,8 @@ export default function ListUnit() {
                   description={item.description}
                   status={item.status}
                   size={item.size}
+                  images={item.images}
+                  ratings={item.rating}
                 />
               </div>
             ))}

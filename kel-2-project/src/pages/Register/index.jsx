@@ -22,9 +22,9 @@ export default function Register() {
   return (
     <>
       <Container>
-        <Row className="mt-30">
-          <Col md={{ span: 6, offset: 3 }}>
-            <Card className="w-30 p-20">
+        <Row className="mt-5">
+          <Col className="col-5 mx-auto" >
+            <Card className="mx-auto p-3">
               <Form action="/#" method="POST" onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3">
                   <Form.Label id="fullName">Fullname</Form.Label>

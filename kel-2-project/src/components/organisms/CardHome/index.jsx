@@ -1,16 +1,16 @@
 import React from "react";
 
 
-export default function CardHome({ unit, price, interior, description }) {
+export default function CardHome({ unit, price, interior, description, images }) {
   return (
     <div>
       <div className="col">
         {" "}
         <div className="card h-100 shadow-sm">
           <img
-            src="https://d3p0bla3numw14.cloudfront.net/news-content/img/2020/09/20160736/tipe-apartemen.jpg"
+            src={images}
             className="card-img-top"
-            alt="..."
+            alt="room images"
           />
           <div className="card-body">
             <div className="clearfix mb-3">
