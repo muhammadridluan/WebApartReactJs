@@ -125,7 +125,7 @@ export default function NaviBar() {
                   )}
                 </Form.Group>
                 <div className="d-grid gap-2">
-                  <Button type="submit" variant="primary">
+                  <Button type="submit" variant="primary" onClick={handleClose}>
                     Login
                   </Button>
                 </div>
