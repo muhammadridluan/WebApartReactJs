@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Form, Row, Card, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 export default function Login() {
   const {
@@ -17,18 +18,30 @@ export default function Login() {
   };
   return (
     <>
-      <Container>
-        <Row>
-          <Col md={{ span: 6, offset: 3 }}>
-            <Card className="w-30 p-20">
-              <Form action="/#" method="POST" onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <img
+          src="https://storage.googleapis.com/dream-machines-output/3d0f72b0-2f85-48e0-9325-c406fec40e3f/0_0.png"
+          class="img-fluid"
+          
+          alt="imgLogin"
+        ></img>
+      </div>
+      <Container className="mt-5 p-3 justify-content-center align-items-center">
+        <Row className="p-3">
+          <Col className="col-6 mx-auto">
+            <Card className="mx-auto">
+              <Form
+                className="m-3"
+                action="/#"
+                method="POST"
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <Form.Group className="mb-3">
                   <Form.Label id="email">Email Address</Form.Label>
                   <Form.Control
                     type="email"
                     id="email"
                     name="email"
-                    // isValid={!errors.email}
                     isInvalid={errors.email}
                     aria-invalid={errors.email ? "true" : "false"}
                     placeholder="Email Address"
