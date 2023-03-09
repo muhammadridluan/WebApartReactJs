@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Corousel, Kartu } from "../../components";
+import { Card, Modal, Button, Row } from "react-bootstrap";
 
 export default function ListUnit() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const [data, setData] = useState([]);
 
   async function getUnits() {
@@ -35,7 +40,9 @@ export default function ListUnit() {
                   size={item.size}
                   images={item.images}
                   ratings={item.rating}
+                  ids={item.id}
                 />
+                
               </div>
             ))}
         </div>

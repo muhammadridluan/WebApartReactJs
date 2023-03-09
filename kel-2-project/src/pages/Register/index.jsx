@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Col, Container, Form, Row, Card, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "../../components";
 
 export default function Register() {
   const {
@@ -17,10 +18,11 @@ export default function Register() {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     alert(JSON.stringify(data));
-    navigate("/login");
+    navigate("/home");
   };
   return (
     <>
+      <Navbar/>
       <Container>
         <Row className="mt-5">
           <Col className="col-5 mx-auto" >
