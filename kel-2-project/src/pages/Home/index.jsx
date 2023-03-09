@@ -7,7 +7,7 @@ export default function Home() {
 
   async function getUnits() {
     try {
-      const response = await axios.get("http://localhost:1880/allRoom");
+      const response = await axios.get("http://localhost:1880/all");
       setData(response.data);
       console.log(response.data);
     } catch (error) {

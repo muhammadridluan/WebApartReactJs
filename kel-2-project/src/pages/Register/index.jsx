@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../components";
 
+
 export default function Register() {
   const {
     register,

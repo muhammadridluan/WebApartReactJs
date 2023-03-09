@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faDotCircle } from "@fortawesome/free-solid-svg-icons";
 import {  Modal, Button  } from "react-bootstrap";
+import Swal from 'sweetalert2'
+import axios from 'axios';
+
 
 export default function Kartu({
   unit,
@@ -12,7 +15,7 @@ export default function Kartu({
   status,
   images,
   ratings,
-  ids
+  id
 }) {
   const stars = [];
   for (let i = 1; i <= ratings; i++) {
@@ -24,6 +27,45 @@ export default function Kartu({
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // Function Delete
+  const deleteDataById = (id) => {
+    axios.delete(`http://127.0.0.1:1880/deleteById/${id}`)
+      .then(() => {
+        console.log('Data deleted successfully');
+      })
+      .catch((error) => {
+        console.log('Error deleting data:', error);
+      });
+  };
+  
+  const handleClick = (e) => {
+    const id = e.target.dataset.id;
+    console.log(`The button ID is ${id}`)
+  
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteDataById(id)
+        window.location.reload();
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+  };
+
+
+
   return (
     <>
       <div className="row m-3 p-2 bg-white border rounded">
@@ -92,12 +134,7 @@ export default function Kartu({
             >
               More detail
             </button>
-            <button
-              className="btn btn-outline-primary btn-sm mt-2"
-              type="button"
-            >
-              Add to wishlist
-            </button>
+            <Button type="button" variant="danger" className="mt-2" data-id={id} onClick={handleClick}>Delete</Button>
           </div>
         </div>
       </div>
