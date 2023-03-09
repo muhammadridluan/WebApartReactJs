@@ -7,6 +7,7 @@ export default function Footer() {
         <div className="container px-5">
           <p className="m-0 text-center text-white">
             Copyright &copy; Your Website 2022
+            
           </p>
         </div>
       </footer>

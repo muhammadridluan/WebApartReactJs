@@ -14,14 +14,14 @@ export default function Login() {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
-    navigate("/home");
+    navigate("/listunit");
   };
   return (
     <>
       <div>
         <img
           src="https://storage.googleapis.com/dream-machines-output/3d0f72b0-2f85-48e0-9325-c406fec40e3f/0_0.png"
-          class="img-fluid"
+          className="img-fluid"
           
           alt="imgLogin"
         ></img>

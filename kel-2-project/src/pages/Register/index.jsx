@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Col, Container, Form, Row, Card, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "../../components";
+
 
 export default function Register() {
   const {
@@ -21,10 +23,11 @@ export default function Register() {
   };
   return (
     <>
+      <Navbar></Navbar>
       <Container>
-        <Row className="mt-30">
-          <Col md={{ span: 6, offset: 3 }}>
-            <Card className="w-30 p-20">
+        <Row className="mt-5">
+          <Col className="col-5 mx-auto" >
+            <Card className="mx-auto p-3">
               <Form action="/#" method="POST" onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3">
                   <Form.Label id="fullName">Fullname</Form.Label>
