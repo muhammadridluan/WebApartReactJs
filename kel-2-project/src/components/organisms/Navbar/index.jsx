@@ -79,9 +79,9 @@ export default function NaviBar() {
           <Modal.Title>Login Form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <Row>
-          <Col md={{ span: 6, offset: 3 }}>
-            <Card className="w-30 p-20">
+        <Row className="p-3 justify-content-center align-items-center">
+          <Col className="col-10 mx-auto">
+            <Card className="mx-auto p-3">
               <Form action="/#" method="POST" onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3">
                   <Form.Label id="email">Email Address</Form.Label>
