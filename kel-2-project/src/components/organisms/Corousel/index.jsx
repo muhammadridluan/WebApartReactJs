@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Corousel() {
     return (
     <>
-    <div className='container-sm container-fluid '>
+    <div className='container-sm container-fluid mt-2 '>
     <Carousel>
         <Carousel.Item>
             <img

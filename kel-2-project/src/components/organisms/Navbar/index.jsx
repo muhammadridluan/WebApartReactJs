@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal'
 import { useForm } from "react-hook-form";
+import { HiHomeModern } from 'react-icons/hi2';
 
 
 export default function NaviBar() {
@@ -30,14 +31,14 @@ export default function NaviBar() {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
-    navigate("/home");
+    navigate("/listunit");
   };
 
   return (    
     <>
       <Navbar key="md" bg="dark" variant="dark" expand="md">
         <Container>
-          <Navbar.Brand href="/home">Bootstrap</Navbar.Brand>
+          <Navbar.Brand href="/home"><h3> <HiHomeModern/> </h3></Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar-expand-md" />
           <Navbar.Offcanvas
             id="offcanvasNavbar-expand-md"
@@ -51,7 +52,7 @@ export default function NaviBar() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link href="/home">Home</Nav.Link>
-                <Nav.Link href="/about">About</Nav.Link>
+                <Nav.Link href="/about">About Us</Nav.Link>
                 <Nav.Link href="/listunit">List Unit</Nav.Link>                
               </Nav>
               <Form className="d-flex">
@@ -125,7 +126,7 @@ export default function NaviBar() {
                   )}
                 </Form.Group>
                 <div className="d-grid gap-2">
-                  <Button type="submit" variant="primary" onClick={handleClose}>
+                  <Button type="submit" variant="primary" onClick={handleClose} >
                     Login
                   </Button>
                 </div>
