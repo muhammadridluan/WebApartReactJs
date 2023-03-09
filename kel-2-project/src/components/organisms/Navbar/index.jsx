@@ -30,7 +30,8 @@ export default function NaviBar() {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
-    navigate("/home");
+    handleClose();    
+    navigate("/listunit");
   };
 
   return (    
@@ -125,7 +126,7 @@ export default function NaviBar() {
                   )}
                 </Form.Group>
                 <div className="d-grid gap-2">
-                  <Button type="submit" variant="primary" onClick={handleClose}>
+                  <Button type="submit" variant="primary">
                     Login
                   </Button>
                 </div>
