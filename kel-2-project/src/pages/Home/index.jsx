@@ -3,7 +3,7 @@ import axios from "axios";
 import { CardHome, Corousel } from "../../components/organisms";
 
 export default function Home() {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
 
   async function getUnits() {
     try {
@@ -25,8 +25,11 @@ export default function Home() {
         className="container-fluid bg-trasparent my-4 p-3"
         style={{ position: "relative" }}
       >
-        <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">        
-          <CardHome></CardHome>          
+        <div className="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+        {data !== undefined &&
+              data?.slice(0, 4).map((item, i) => (        
+                <CardHome key={i} price={item.price} unit={item.unit} interior={item.interior} description={item.description}/>
+          ))}          
         </div>
       </div>
     </>

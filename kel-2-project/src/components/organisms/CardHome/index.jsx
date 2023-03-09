@@ -20,7 +20,7 @@ export default function CardHome({ unit, price, interior, description }) {
               </span>{" "}
               <span className="float-end price-hp">IDR {price}</span>
             </div>
-            <h3>{unit}</h3>
+            <h4>{unit}</h4>
             <h5 className="card-title">{description}</h5>{" "}
             <div className="text-center my-4">
               {" "}
